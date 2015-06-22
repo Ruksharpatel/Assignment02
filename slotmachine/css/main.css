@@ -1,5 +1,24 @@
-﻿ul#playerStats {
-    list-style-type: none;
-    padding: 0;
-    margin: 5px;
+﻿@font-face {
+    font-family: 'digital-7';
+    src: url('../fonts/digital-7.ttf') format('truetype');
+}
+
+body {
+   /*background-image: url('../img/bg.jpg');
+   background-size:100%;*/
+    
+    
+    
+}
+
+#canvas {
+    border:hidden;
+    display:block;
+    margin:auto;
+    
+    
+   
+    
+     
+   
 }
