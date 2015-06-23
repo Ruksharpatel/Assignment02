@@ -60,7 +60,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="img\bg1.jpg" />
+    <Content Include="img\downArrow.fw.png" />
+    <Content Include="img\downArrow.png" />
     <Content Include="img\SlotMachine1.png" />
+    <Content Include="img\uparrow.fw.png" />
+    <Content Include="img\uparrow.png" />
     <Content Include="packages.config" />
     <Content Include="Documentation\External Game Document .docx" />
     <None Include="Web.Debug.config">

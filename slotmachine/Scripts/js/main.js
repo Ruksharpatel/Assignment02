@@ -80,6 +80,8 @@ var betMaxButton;
 var betOneButton;
 var resetButton;
 var powerButton;
+var increaseButton;
+var decreaseButton;
 
 // Game Functions Starts from here//
 function init() {
@@ -95,18 +97,22 @@ function init() {
 /* Utility function to display all the values/labels */
 function labels() {
     var canvas = document.getElementById("canvas");
-
+   
     var text1 = canvas.getContext("2d");
     text1.fillStyle = "#ADD8E6";
     text1.font = "17px Times New Roman";
     text1.fillText("Player's Money: " + playerMoney, 35, 430);
     text1.fillText("Player's Bet: " + playerBet, 193, 430);
 
-    
     var text2 = canvas.getContext("2d");
     text2.fillStyle = "#ADD8E6";
     text2.font = "20px Times New Roman";
-    text2.fillText("Jackpot \t" +jackpot, 100, 380);
+    text2.fillText("Jackpot \t" + jackpot, 100, 380);
+
+    var text3 = canvas.getContext("2d");
+    text3.fillStyle = "#ADD8E6";
+    text3.font = "20px Times New Roman";
+    text3.fillText("Change Bet", 60, 520)
     
 }
 
@@ -307,6 +313,25 @@ function powerButtonClicked(event) {
     window.close();
 }
 
+//enables user to increase th bet money
+function betIncButtonClicked(event) {
+    if (playerBet >= playerMoney)
+        alert("You are not allowed to bet more than this.");
+    else {
+        playerBet = playerBet + 10;
+        gameLoop();
+    }
+}
+
+//enables user to decrease th bet money
+function betDecButtonClicked(event) {
+    if (playerBet <= 10)
+        alert("You are not allowed to bet bellow this.");
+    else {
+        playerBet = playerBet - 10;
+        gameLoop();
+    }
+}
 
 /*this will enable user to bet the minimum amount at one spin*/
 function betOneButtonClicked(event) {
@@ -384,7 +409,16 @@ function createUI() {
     powerButton = new Button("img/powerButton.fw.png", 30, 445);
     game.addChild(powerButton.getImage());
     powerButton.getImage().addEventListener("click", powerButtonClicked);
-    
+
+    //Up button to increase Bet
+    increaseButton = new Button("img/uparrow.png", 170, 500);
+    game.addChild(increaseButton.getImage());
+    increaseButton.getImage().addEventListener("click", betIncButtonClicked);
+
+    //Down button to decrease Bet
+    decreaseButton = new Button("img/downArrow.png", 220, 500);
+    game.addChild(decreaseButton.getImage());
+    decreaseButton.getImage().addEventListener("click", betDecButtonClicked);
 }
 
 function main() {
