@@ -85,7 +85,7 @@ var powerButton;
 function init() {
     canvas = document.getElementById("canvas");
     stage = new createjs.Stage(canvas); // Parent Object
-    stage.enableMouseOver(40); // Turn on Mouse Over events
+    stage.enableMouseOver(20); // Turn on Mouse Over events
     createjs.Ticker.setFPS(60); // Set the frame rate to 60 fps
     createjs.Ticker.addEventListener("tick", gameLoop);
 
@@ -157,7 +157,7 @@ e.g. Bar - Orange - Banana */
 function Reels() {
     var betLine = [" ", " ", " "];
     var outCome = [0, 0, 0];
-
+    
     for (var spin = 0; spin < 3; spin++) {
         outCome[spin] = Math.floor((Math.random() * 65) + 1);
         switch (outCome[spin]) {
@@ -306,6 +306,7 @@ function resetButtonClicked(event) {
 
 //when the user wants to exit the game
 function powerButtonClicked(event) {
+    window.open('', '_self', '');
     window.close();
 }
 
@@ -350,7 +351,7 @@ function betMaxButtonClicked(event) {
     playerBet = playerMoney;
     spinResult = Reels();
     fruits = spinResult[0] + " - " + spinResult[1] + " - " + spinResult[2];
-
+    
     determineWinnings();
     turn++;
 
