@@ -41,16 +41,16 @@
     return Button;
 })();
 
-// VARIABLES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//VARIABLE SCTION STARTS FROM HERE//
 var canvas;
 var stage;
 var tiles = [];
 var reelContainers = [];
 
-// GAME CONSTANTS
+/*CONSTANT variable*/
 var NUM_REELS = 3;
 
-// GAME VARIABLES
+/*Game variables*/
 var playerMoney = 1000;
 var winnings = 0;
 var jackpot = 5000;
@@ -62,7 +62,7 @@ var spinResult;
 var fruits = "";
 var winRatio = 0;
 
-/* Tally Variables */
+/* Game Symbols */
 var bells = 0;
 var coins = 0;
 var cherries = 0;
@@ -72,7 +72,7 @@ var lemons = 0;
 var grapes = 0;
 var blanks = 0;
 
-// GAME OBJECTS
+/*OBJECTS VARIABLE*/
 var game;
 var background;
 var spinButton;
@@ -81,7 +81,7 @@ var betOneButton;
 var resetButton;
 var powerButton;
 
-// FUNCTIONS ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Game Functions Starts from here//
 function init() {
     canvas = document.getElementById("canvas");
     stage = new createjs.Stage(canvas); // Parent Object
@@ -97,23 +97,20 @@ function labels() {
     var canvas = document.getElementById("canvas");
 
     var text1 = canvas.getContext("2d");
-    text1.fillStyle = "Pink";
+    text1.fillStyle = "#ADD8E6";
     text1.font = "17px Times New Roman";
-    text1.fillText("Player's Money: " + playerMoney, 45, 430);
-    text1.fillText("Player's Bet: " + playerBet, 200, 430);
+    text1.fillText("Player's Money: " + playerMoney, 35, 430);
+    text1.fillText("Player's Bet: " + playerBet, 193, 430);
 
-    /* var text2 = canvas.getContext("2d");
-    text2.fillStyle = "black";
-    text2.font = "18px Arial";
-    text2.fillText("Change bet amount : ", 90, 442);*/
-    var text3 = canvas.getContext("2d");
-    text3.fillStyle = "Pink";
-    text3.font = "20px Times New Roman";
-    text3.fillText("Jackpot", 50, 380);
-    text3.fillText(jackpot, 130, 380);
+    
+    var text2 = canvas.getContext("2d");
+    text2.fillStyle = "#ADD8E6";
+    text2.font = "20px Times New Roman";
+    text2.fillText("Jackpot \t" +jackpot, 100, 380);
+    
 }
 
-// GAMELOOP
+/*GAMELOOP*/
 function gameLoop() {
     stage.update();
     labels();
@@ -269,7 +266,7 @@ function checkJackPot() {
     }
 }
 
-// Spin button clicked and the values for the reels are fetched
+/*Spin button clicked and the values for the reels are fetched*/
 function spinButtonClicked(event) {
     if (playerMoney == 0) {
         if (confirm("You ran out of Money! \nDo you want to play again?")) {
@@ -297,40 +294,21 @@ function spinButtonClicked(event) {
     }
 }
 
-//when the user wants to restart the game over
+/*When the user wants to restart the Game*/
 function resetButtonClicked(event) {
     resetFruitTally();
     resetAll();
     main();
 }
 
-//when the user wants to exit the game
+/*when the user wants to exit the game*/
 function powerButtonClicked(event) {
     window.open('', '_self', '');
     window.close();
 }
 
-//enables user to increase th bet money
-function betIncButtonClicked(event) {
-    if (playerBet >= playerMoney)
-        alert("You are not allowed to bet more than this.");
-    else {
-        playerBet = playerBet + 10;
-        gameLoop();
-    }
-}
 
-//enables user to decrease th bet money
-function betDecButtonClicked(event) {
-    if (playerBet <= 10)
-        alert("You are not allowed to bet bellow this.");
-    else {
-        playerBet = playerBet - 10;
-        gameLoop();
-    }
-}
-
-//this will enable user to bet the lowest amount at one spin
+/*this will enable user to bet the minimum amount at one spin*/
 function betOneButtonClicked(event) {
     playerBet = 10;
     spinResult = Reels();
@@ -346,7 +324,7 @@ function betOneButtonClicked(event) {
     }
 }
 
-//this will enable user to bet the highest amount which is total money of user in this case on single spin
+/*this will enable user to bet the highest amount*/
 function betMaxButtonClicked(event) {
     playerBet = playerMoney;
     spinResult = Reels();
@@ -381,40 +359,32 @@ function createUI() {
     reelContainers[2].y = 247;
 
     // Spin Button
-    spinButton = new Button("img/spinButton.fw.png", 270, 440);
+    spinButton = new Button("img/spinButton.fw.png", 270, 445);
     game.addChild(spinButton.getImage());
 
     // Spin Button Event Listeners
     spinButton.getImage().addEventListener("click", spinButtonClicked);
 
     // Bet Max Button
-    betMaxButton = new Button("img/betTenButton.fw.png", 210, 440);
+    betMaxButton = new Button("img/betTenButton.fw.png", 210, 445);
     game.addChild(betMaxButton.getImage());
     betMaxButton.getImage().addEventListener("click", betMaxButtonClicked);
 
     // Bet One Button
-    betOneButton = new Button("img/betOneButton.fw.png", 150, 440);
+    betOneButton = new Button("img/betOneButton.fw.png", 150, 445);
     game.addChild(betOneButton.getImage());
     betOneButton.getImage().addEventListener("click", betOneButtonClicked);
 
     // Reset Button
-    resetButton = new Button("img/resetButton.fw.png", 90, 440);
+    resetButton = new Button("img/resetButton.fw.png", 90, 445);
     game.addChild(resetButton.getImage());
     resetButton.getImage().addEventListener("click", resetButtonClicked);
 
     // Power Button
-    powerButton = new Button("img/powerButton.fw.png", 30, 440);
+    powerButton = new Button("img/powerButton.fw.png", 30, 445);
     game.addChild(powerButton.getImage());
     powerButton.getImage().addEventListener("click", powerButtonClicked);
-    // Bet increase Button
-    /*   betIncButton = new Button("images/arrow_up.png", 270, 420);
-    game.addChild(betIncButton.getImage());
-    betIncButton.getImage().addEventListener("click", betIncButtonClicked);
     
-    // Bet decrease Button
-    betDecButton = new Button("images/arrow_down.png", 320, 420);
-    game.addChild(betDecButton.getImage());
-    betDecButton.getImage().addEventListener("click", betDecButtonClicked);*/
 }
 
 function main() {

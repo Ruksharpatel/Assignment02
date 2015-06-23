@@ -59,8 +59,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="img\bg1.jpg" />
     <Content Include="img\SlotMachine1.png" />
     <Content Include="packages.config" />
+    <Content Include="Documentation\External Game Document .docx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
