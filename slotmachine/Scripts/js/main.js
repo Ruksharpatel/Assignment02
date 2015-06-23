@@ -84,9 +84,9 @@ var powerButton;
 // FUNCTIONS ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 function init() {
     canvas = document.getElementById("canvas");
-     stage = new createjs.Stage(canvas); // Parent Object
-     stage.enableMouseOver(20); // Turn on Mouse Over events
-     createjs.Ticker.setFPS(60); // Set the frame rate to 60 fps
+    stage = new createjs.Stage(canvas); // Parent Object
+    stage.enableMouseOver(40); // Turn on Mouse Over events
+    createjs.Ticker.setFPS(60); // Set the frame rate to 60 fps
     createjs.Ticker.addEventListener("tick", gameLoop);
 
     main();
@@ -99,7 +99,7 @@ function labels() {
     var text1 = canvas.getContext("2d");
     text1.fillStyle = "Pink";
     text1.font = "17px Times New Roman";
-    text1.fillText("Player's Money:" + playerMoney, 45, 430);
+    text1.fillText("Player's Money: " + playerMoney, 45, 430);
     text1.fillText("Player's Bet: " + playerBet, 200, 430);
 
     /* var text2 = canvas.getContext("2d");
